@@ -7,11 +7,14 @@
 ### 2. Variable Selection/Feature Selection
   - http://rstatistics.net/variable-importance-of-predictors-that-contribute-most-significantly-to-a-response-variable-in-r/
 
-### 3. [Strategies to Speedup R Code](https://datascienceplus.com/strategies-to-speedup-r-code/)
+### 3. Strategies to Speedup R Code
+  - [Link](https://datascienceplus.com/strategies-to-speedup-r-code/)
 
-### 4. [Parallel Processing in R](https://www.r-bloggers.com/implementing-parallel-processing-in-r/)
+### 4. Parallel Processing in R
+  - [link](https://www.r-bloggers.com/implementing-parallel-processing-in-r/)
 
-### 5. [Saving multiple outputs of foreach loop](https://stackoverflow.com/questions/19791609/saving-multiple-outputs-of-foreach-dopar-loop)
+### 5. Saving multiple outputs of foreach loop
+  - [Link](https://stackoverflow.com/questions/19791609/saving-multiple-outputs-of-foreach-dopar-loop)
 
 ### 6. Missing value imputation
   - [How to Handle Missing Data](https://towardsdatascience.com/how-to-handle-missing-data-8646b18db0d4)
@@ -21,11 +24,14 @@
 ### 7. How to build Ensemble model in R (Combination of different ML models)
   - [How to build Ensemble Models in machine learning? (with code in R)](https://www.analyticsvidhya.com/blog/2017/02/introduction-to-ensembling-along-with-implementation-in-r/)
 
-### 8. [Model building on Large Datasets](https://www.analyticsvidhya.com/blog/2016/05/h2o-data-table-build-models-large-data-sets/)
+### 8. Model building on Large Datasets
+  - [Link](https://www.analyticsvidhya.com/blog/2016/05/h2o-data-table-build-models-large-data-sets/)
 
-### 9. [ROC Curve explanation](https://ashokharnal.wordpress.com/2014/03/14/a-very-simple-explanation-for-auc-or-area-under-the-roc-curve/)
+### 9. ROC Curve explanation
+  - [Link](https://ashokharnal.wordpress.com/2014/03/14/a-very-simple-explanation-for-auc-or-area-under-the-roc-curve/)
 
-### 10. [Setting up R-Studio on google cloud](https://yuhuisdatascienceblog.blogspot.com/2017/07/setting-up-r-studio-server-on-google.html)
+### 10. Setting up R-Studio on google cloud
+  - [Link](https://yuhuisdatascienceblog.blogspot.com/2017/07/setting-up-r-studio-server-on-google.html)
 
 ### 11. Install EBImage package [For Image Analysis] on UNIX/Linux systems
   - [EBImage installation](https://bioc.ism.ac.jp/packages/2.4/bioc/vignettes/EBImage/inst/doc/EBImage-installation.pdf)
@@ -50,4 +56,5 @@
   - [Big Data Clustering Algorithms & Strategies](https://www.slideshare.net/bazad/big-data-clustering-algorithms-and-strategies)
   - [K-Prototypes + Correlation + RandomForest](https://www.kaggle.com/rahultej/k-prototypes-correlation-randomforest)
 
-### 15. [Why Outlier treatment is required](http://r-statistics.co/Outlier-Treatment-With-R.html)
+### 15. Why Outlier treatment is required
+  - [Link](http://r-statistics.co/Outlier-Treatment-With-R.html)
