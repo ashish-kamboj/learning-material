@@ -554,11 +554,3 @@ It holds one part of a model constant and doing OLS on the rest; then assuming t
 - M-estimator — forthcoming in v1.4. Described in the code here. Simplified target encoder.
 
 ---
-
-<br></br>
-
----
-## Courses
-1. Google Machine Learning crash course [(here)](https://developers.google.com/machine-learning/crash-course/ml-intro)
-2. Practical Deep Learning for Coders [(here)](https://course.fast.ai/)
-3. fast.ai courses [(here)](https://www.fast.ai/)
