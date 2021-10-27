@@ -374,6 +374,14 @@ Gradient descent is used to minimize the cost function or any other function
 
 ---
 
+### Q. How the tree built in Random Forest different from XGBoost?
+
+---
+
+### Q. What kind of separator tree-based algorithm have?
+
+---
+
 ### Q. Distance Measures [(here)](https://machinelearningmastery.com/distance-measures-for-machine-learning/)
  - Hamming Distance
  - Euclidean Distance
@@ -533,6 +541,10 @@ It holds one part of a model constant and doing OLS on the rest; then assuming t
 	- Extended Isolation Forest
 7. **Dimension Reduction Based Approaches**
 	- Principal Component Analyses (PCA)
+
+---
+
+### Q. How to handle high cardinality categorical features in model building?
 
 ---
 
