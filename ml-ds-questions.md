@@ -427,6 +427,14 @@ Hierarchical clustering generally produces better clusters, but is more computat
 
 ---
 
+### Q. Will the result of K-Means vary in each iteration (means executed multiple times from starting)
+
+---
+
+### Q. How to check convergence in K-Means
+
+---
+
 ### Q. How to calculate Gower’s Distance using Python [(here)](https://medium.com/analytics-vidhya/concept-of-gowers-distance-and-it-s-application-using-python-b08cf6139ac2)
 
 ---
