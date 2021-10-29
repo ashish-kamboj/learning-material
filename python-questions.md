@@ -38,17 +38,21 @@ Generator functions allow you to declare a function that behaves like an iterato
 
 ---
 
-### Q. Difference between Array and List in Python
+### Q. Difference between Python List and Numpy Array
 
-| List                                                      | Array
-|:----------------------------------------------------------|:--------------------------------------------------------------------------------------|
-| Can consist of elements belonging to different data types	| Only consists of elements belonging to the same data type
-| No need to explicitly import a module for declaration	    | Need to explicitly import a module for declaration
-| Cannot directly handle arithmetic operations	            | Can directly handle arithmetic operations
-| Can be nested to contain different type of elements	      | Must contain either all nested elements of same size
-| Preferred for shorter sequence of data items	            | Preferred for longer sequence of data items
+| List                                                                      | Array
+|:--------------------------------------------------------------------------|:-----------------------------------------------------------------------|
+| Can consist of elements belonging to different data types	                | Only consists of elements belonging to the same data type
+| No need to explicitly import a module for declaration	                    | Need to explicitly import a module for declaration
+| Cannot directly handle arithmetic operations	                             | Can directly handle arithmetic operations
+| Can be nested to contain different type of elements	                      | Must contain either all nested elements of same size
+| Preferred for shorter sequence of data items	                             | Preferred for longer sequence of data items
 | Greater flexibility allows easy modification (addition, deletion) of data	| Less flexibility since addition, deletion has to be done element wise
 | The entire list can be printed without any explicit looping	              | A loop has to be formed to print or access the components of array
 | Consume larger memory for easy addition of elements	                      | Comparatively more compact in memory size
+
+**Other Resources**
+- [What are the advantages of NumPy over regular Python lists?](https://stackoverflow.com/questions/993984/what-are-the-advantages-of-numpy-over-regular-python-lists)
+- [Python Lists vs. Numpy Arrays - What is the difference?](https://webcourses.ucf.edu/courses/1249560/pages/python-lists-vs-numpy-arrays-what-is-the-difference#:~:text=A%20numpy%20array%20is%20a,a%20tuple%20of%20nonnegative%20integers.&text=A%20list%20is%20the%20Python,is%20the%20real%20difference%20here.)
 
 ---
