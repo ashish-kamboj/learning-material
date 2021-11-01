@@ -12,4 +12,4 @@
 ### 4. Working with missing data in Python
 - [Working with missing data](https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html)
 
-### 5. 10 Advanced Python Tricks To Write Faster, Cleaner Code [Link](https://medium.com/pythonland/10-advanced-python-tricks-to-write-faster-cleaner-code-f9ee76fa878f)
+### 5. 10 Advanced Python Tricks To Write Faster, Cleaner Code [(Link)](https://medium.com/pythonland/10-advanced-python-tricks-to-write-faster-cleaner-code-f9ee76fa878f)
