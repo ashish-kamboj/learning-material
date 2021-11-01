@@ -517,6 +517,12 @@ It holds one part of a model constant and doing OLS on the rest; then assuming t
 
 ---
 
+### Q. All about When and How to do train_test_split and pre_processing
+  - [3 Things You Need To Know Before You Train-Test Split](https://towardsdatascience.com/3-things-you-need-to-know-before-you-train-test-split-869dfabb7e50)
+  - [How to Avoid Data Leakage When Performing Data Preparation](https://machinelearningmastery.com/data-preparation-without-data-leakage/)
+	
+---
+
 ### Q. Anomaly Detection Algorithms [(here)](https://towardsdatascience.com/unsupervised-anomaly-detection-on-time-series-9bcee10ab473)
 1. **Probability Based Approaches**
 	- Using Z-score
