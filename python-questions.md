@@ -20,6 +20,15 @@
 
 ---
 
+### Q. What *args and **kwargs actually mean [(here)](https://realpython.com/python-kwargs-and-args/)
+- ***args** and ****kwargs** allow you to pass multiple arguments or keyword arguments to a function
+- *args allows to pass a varying number of positional arguments
+- For ***args** iterable object get using the unpacking operator * is not a list but a tuple
+- ****kwargs** accepts keyword (or named) arguments instead of positional arguments
+- Iterable object is standard dictionary in calse of ****kwargs**
+
+---
+
 ### Q. Meaning of parameter `inplace = True` in pandas function
 If it's `True` it will update the dataframe based on the function applied without assigining to object. Eg.
 
