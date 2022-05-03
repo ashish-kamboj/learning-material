@@ -501,7 +501,7 @@ It holds one part of a model constant and doing OLS on the rest; then assuming t
 
 ---
 
-### Q. How Parallelization works in XGBoost giving that boosting technique build models sequentially?
+### Q. How Parallelization works in XGBoost giving that boosting technique build models sequentially? [(here)](http://zhanpengfang.github.io/418home.html)
 
 ---
 
