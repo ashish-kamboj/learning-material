@@ -387,6 +387,7 @@ Gradient descent is used to minimize the cost function or any other function
  - Euclidean Distance
  - Manhattan Distance (Taxicab or City Block)
  - Minkowski Distance
+ - Mahalanobis Distance (For measuring the distance between a point and a distribution)
 
 ---
 
