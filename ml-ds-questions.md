@@ -99,6 +99,13 @@ For checking correlation between 2 categorical vaiables use "Chi-Square test" or
   - [Hypothesis testing; z test, t-test. f-test](https://www.slideshare.net/shakehandwithlife/hypothesis-testing-z-test-ttest-ftest)
 ---
 
+### Q. Techniques of Outlier Detection
+ - Elliptic Envelope [(here)](https://towardsdatascience.com/two-outlier-detection-techniques-you-should-know-in-2021-1454bef89331)
+ - IQR Based Detection [(here)](https://towardsdatascience.com/two-outlier-detection-techniques-you-should-know-in-2021-1454bef89331)
+ - Using Mahalanobis Distance - [Multivariate Outlier Detection in Python](https://towardsdatascience.com/multivariate-outlier-detection-in-python-e946cfc843b3)
+
+---
+
 ### Q. Missing Values Imputation
  - Do Nothing
  - Imputation Using (Mean/Median) Values
