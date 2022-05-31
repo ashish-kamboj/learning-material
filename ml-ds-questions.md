@@ -135,12 +135,15 @@ For checking correlation between 2 categorical vaiables use "Chi-Square test" or
 ---
 
 ### Q. Dimensionality Reduction algorithms
- - Principal Component Analysis
- - Singular Value Decomposition
- - Linear Discriminant Analysis
+ - Principal Component Analysis(PCA)
+ - Singular Value Decomposition(SVD)
+ - Linear Discriminant Analysis(LDA)
+ - Independent Component Analysis(ICA)
+ - Multi dimensional scaling(MDS)
  - Isomap Embedding
  - Locally Linear Embedding
  - Modified Locally Linear Embedding
+ - t-distributed stochastic neighbour embedding(t-SNE)
 
 ---
 
