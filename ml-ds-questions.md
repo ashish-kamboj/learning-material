@@ -591,3 +591,25 @@ It holds one part of a model constant and doing OLS on the rest; then assuming t
 - M-estimator — forthcoming in v1.4. Described in the code here. Simplified target encoder.
 
 ---
+
+### Q. Mistakes while performing A/B Testing and their Remedies
+
+**1. Mistake novelty effect as real effect**
+Novelty effect is when customers engage with a new feature simply because it's new, but not because they like it. You might see the treatment gets more engagement than control in the beginning, but it's not the real effect.
+
+**Remedy:** instead of analyzing all customers with the same cut-off for start time and end time, do a cohort analysis based on when customers get assigned to the treatment group, and see whether this effect wears off with time.
+
+**2. Cannibalization**
+The treatment you test might have a positive impact for your experiment, but it might hurt other features on the website, and that's why it's call 'cannibalization'.
+
+**Remedy:** use linear models to estimate interaction effect. You can create four cohorts and analyze them: the cohort that are in controls for both experiments, the cohort that in treatments for both experiments, and also isolate the cohorts that are only in one experiment. You need to make sure the cohorts have similar duration of exposure to compare.
+
+But sometimes the effect is hard to measure, so before you design an experiment, work with product managers and ux researchers to understand the entire customer journey, top priority business metrics to optimize for, instead of just focusing on the performance of your experiment. Understand the ecosystem of where your feature lives in.
+
+**3. "Cherry-pick" metrics for launch decisions**
+Sometimes decision makers really want to launch a feature, and they would pick whatever looks positive to support their decisions, which violates the principals of statistical testing.
+
+**Remedy:** have no more than three core metrics, and have 1-2 secondary metrics to make decisions. The key is to decide on those metrics BEFORE you start experimentation, and stick to them. Don't move the goal posts just because you want to launch it. If you see something interesting, investigate it, treat it as a new assumption, and don't make your decision based on an unexpected change.
+
+
+---
