@@ -182,6 +182,14 @@ For checking correlation between 2 categorical vaiables use "Chi-Square test" or
 
 ---
 
+### Q. What’s the Difference Between RMSE and RMSLE (Evaluation metrics for Linear Regression)? [(here)](https://medium.com/analytics-vidhya/root-mean-square-log-error-rmse-vs-rmlse-935c6cc1802a)
+Using **RMSLE** as evaluation metrics have below characterstics-
+ - Robustness to the effect of the outliers
+ - Calculates Relative Error
+ - Biased Penalty (RMSLE incurs a larger penalty for the underestimation of the Actual variable than the Overestimation)
+
+---
+
 ### Q. Difference betweence correlation and collinearity
 **Correlation** - How two values are moving with each other and their direction
 
