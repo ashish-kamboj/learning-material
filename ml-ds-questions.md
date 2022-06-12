@@ -310,6 +310,10 @@ Two vectors are uncorrelated (or independent of each other) when they are perpen
 
 ---
 
+### Q. Why **"log loss"** as evaluation metrics not **"Mean squared error"** for Logistic Regression? [(here)](https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c)
+
+---
+
 ### Q. When to use Logistic Regression vs SVM? or Differences between Logistic Regression and SVM**
   - Logistic loss diverges faster than hinge loss. So, in general, it will be more sensitive to outliers.
   - Logistic loss does not go to zero even if the point is classified sufficiently confidently. This might lead to minor degradation in accuracy.
