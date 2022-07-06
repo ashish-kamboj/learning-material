@@ -546,7 +546,7 @@ It holds one part of a model constant and doing OLS on the rest; then assuming t
 	
 ---
 
-### Q. Anomaly Detection Algorithms [(here)](https://towardsdatascience.com/unsupervised-anomaly-detection-on-time-series-9bcee10ab473)
+### Q. Anomaly Detection Unsupervised Algorithms for Time-series data[(here)](https://towardsdatascience.com/unsupervised-anomaly-detection-on-time-series-9bcee10ab473)
 1. **Probability Based Approaches**
 	- Using Z-score
 	- Quartiles-based
