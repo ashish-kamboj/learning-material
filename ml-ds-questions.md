@@ -192,25 +192,25 @@ Using **RMSLE** as evaluation metrics have below characterstics-
 
 ### Q. MAPE vs. sMAPE
 
-### <ins>Mean Absolute Percentage Error (MAPE)</ins>
+#### <ins>Mean Absolute Percentage Error (MAPE)</ins>
 
-### Advantages
+#### Advantages
 -   Expressed as a percentage, which is scale-independent and can be used for comparing forecasts on different scales. We should remember though that the values of MAPE may exceed 100%.
 -   Easy to explain to stakeholders.
 
-### Shortcomings
+#### Shortcomings
 -   MAPE takes undefined values when there are zero values for the actuals, which can happen in, for example, demand forecasting. Additionally, it takes extreme values when the actuals are very close to zero.
 -   MAPE is asymmetric and it puts a heavier penalty on negative errors (when forecasts are higher than actuals) than on positive errors. This is caused by the fact that the percentage error cannot exceed 100% for forecasts that are too low. While there is no upper limit for the forecasts which are too high. As a result,  <mark>MAPE will favor models that under-forecast rather than over-forecast</mark>.
 -   MAPE assumes that the unit of measurement of the variable has a meaningful zero value. So while forecasting demand and using MAPE makes sense, it does not when forecasting temperature expressed on the Celsius scale (and not only that one), as the temperature has an arbitrary zero point.
 -   MAPE is not everywhere differentiable, which can result in problems while using it as the optimization criterion.
 
-### <ins>symmetric Mean Absolute Percentage Error (sMAPE)</ins>
+#### <ins>symmetric Mean Absolute Percentage Error (sMAPE)</ins>
 
-## Advantages
+#### Advantages
 -   Expressed as a percentage.
 -   Fixes the shortcoming of the original MAPE — it has both the lower (0%) and the upper (200%) bounds.
 
-## Shortcomings
+#### Shortcomings
 -   Unstable when both the true value and the forecast are very close to zero. When it happens, we will deal with division by a number very close to zero.
 -   sMAPE can take negative values, so the interpretation of an “absolute percentage error” can be misleading.
 -   The range of 0% to 200% is not that intuitive to interpret, hence often the division by the 2 in the denominator of the sMAPE formula is omitted.
@@ -218,7 +218,7 @@ Using **RMSLE** as evaluation metrics have below characterstics-
 -   Same assumptions as the MAPE regarding the meaningful zero value.
 -   While fixing the asymmetry of boundlessness, sMAPE introduces another kind of delicate asymmetry caused by the denominator of the formula. Imagine two cases. In the first one, we have A = 100 and F = 120. The sMAPE is 18.2%. Now a very similar case, in which we have A = 100 and F = 80. Here we come out with the sMAPE of 22.2%.
 
-<ins>**References**</ins>
+#### <ins>References</ins>
 - [Choosing the correct error metric: MAPE vs. sMAPE](https://towardsdatascience.com/choosing-the-correct-error-metric-mape-vs-smape-5328dec53fac)
 - [Forecast KPIs: RMSE, MAE, MAPE & Bias](https://towardsdatascience.com/forecast-kpi-rmse-mae-mape-bias-cdc5703d242d)
 
