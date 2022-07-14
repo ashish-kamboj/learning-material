@@ -344,6 +344,18 @@ Two vectors are uncorrelated (or independent of each other) when they are perpen
 
 ---
 
+### Q. Why to take Precision-Recall harmonic mean and not an arithmetic mean to calculate F1-Score?
+
+This is because harmonic mean punishes extreme values more.
+Let's consider an example, Binary classification with results - **Precision:0**, **Recall:1**
+
+ - Here, if we take the **arithmetic mean**, we get 0.5. It is clear
+   that the above result comes from a **dumb classifier** which just
+   ignores the input and just predicts one of the classes as output.
+ - Now, if we were to take HM, we will get 0 which is accurate as this model is useless for all purposes.
+
+---
+
 ### Q. Why **"log loss"** as evaluation metrics not **"Mean squared error"** for Logistic Regression? [(here)](https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c)
 
 ---
