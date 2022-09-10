@@ -113,6 +113,9 @@ For checking correlation between 2 categorical vaiables use "Chi-Square test" or
  - Imputation Using (Most Frequent) or (Zero/Constant) Values
  - Imputation Using k-NN
  - Imputation Using Multivariate Imputation by Chained Equation (MICE)
+   - **Assumption** - Data should be missing at Random (MAR)
+   - **Advantages** - Accurate
+   - **Disadvantages** - Slow, Memmory intensive
  - Imputation Using Deep Learning (Datawig)
 
 ---
