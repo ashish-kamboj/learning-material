@@ -149,6 +149,9 @@ For checking correlation between 2 categorical vaiables use "Chi-Square test" or
  - Modified Locally Linear Embedding
  - t-distributed stochastic neighbour embedding(t-SNE)
 
+**Reference**
+- [PCA vs LDA vs T-SNE — Let’s Understand the difference between them!](https://medium.com/analytics-vidhya/pca-vs-lda-vs-t-sne-lets-understand-the-difference-between-them-22fa6b9be9d0)
+
 ---
 
 ### Q. Is there any basis to decide the train and test split ratio?
