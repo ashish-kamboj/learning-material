@@ -457,6 +457,13 @@ Gradient descent is used to minimize the cost function or any other function
 
 ---
 
+### Q. Advantages of Ensemble model
+1. Improvement in Performance
+2. To convert High Bias and High Variance model to Low Bias and Low variance model
+3. Robustness (robust to chnage in data)
+
+---
+
 ### Q. Distance Measures [(here)](https://machinelearningmastery.com/distance-measures-for-machine-learning/)
  - Hamming Distance
  - Euclidean Distance
