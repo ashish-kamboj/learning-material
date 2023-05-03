@@ -78,4 +78,6 @@ Generator functions allow you to declare a function that behaves like an iterato
 |We are required to use the double quotation for the string object|We can use either a single or double quote for the string objects|
 |The return object type in JSON is a ‘string’ object type|The return object type in a dictionary is the ‘dict’ object type|
 
+<ins>Reference:</ins> [Convert Dictionary to JSON Python](https://www.scaler.com/topics/convert-dictionary-to-json-python/)
+
 ---
