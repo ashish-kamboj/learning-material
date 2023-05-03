@@ -66,3 +66,16 @@ Generator functions allow you to declare a function that behaves like an iterato
 - [Python Lists vs. Numpy Arrays - What is the difference?](https://webcourses.ucf.edu/courses/1249560/pages/python-lists-vs-numpy-arrays-what-is-the-difference#:~:text=A%20numpy%20array%20is%20a,a%20tuple%20of%20nonnegative%20integers.&text=A%20list%20is%20the%20Python,is%20the%20real%20difference%20here.)
 
 ---
+
+### Q. Difference between JSON and Python dictionary
+
+|JSON                                   |Python Dictionary                                       |
+|---------------------------------------|--------------------------------------------------------|
+|The keys in JSON can be only strings.  |The keys in the dictionary can be any hashable object.  |
+|In JSON, the keys are sequentially ordered and can be repeated.|In the dictionary, the keys cannot be repeated and must be distinct.|
+|In JSON, the keys have a default value of undefined.|Dictionaries do not have any default value set.|
+|IN JSON file format, the values are accessed by using the “.”(dot) or “[]” operator.|In the dictionary, the values are mostly accessed by the subscript operator. For example, if 'dict' = {'A':'123R' ,'B':'678S'} then by simply calling dict['A'] we can access values associated.|
+|We are required to use the double quotation for the string object|We can use either a single or double quote for the string objects|
+|The return object type in JSON is a ‘string’ object type|The return object type in a dictionary is the ‘dict’ object type|
+
+---
