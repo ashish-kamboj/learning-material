@@ -1,3 +1,30 @@
+### Spark Operations
+ - Transformation
+ - Action
+
+ ---
+
+ ### RDD - Resilient Distributed Dataset
+ - Fault tolerant distributed dataset
+ - Lazy Evaluation
+ - Caching
+ - In memory computation
+ - Immutability
+ - Partitioning
+
+ **Reference**
+ - [Youtube](https://www.youtube.com/watch?v=2A_faYLOvWo)
+
+ ---
+
+### Spark Architechture Flow
+ DAG (combination of RDDs) -> DAG Scheduler -> Task Scheduler (output: set of stages) -> Cluster Manager (Does resource allocation) -> Executor
+
+  **Reference**
+ - [Youtube](https://www.youtube.com/watch?v=855Cz-JC7nU)
+
+  ---
+
 ### Q. Difference between RDD, Dataframe and Dataset 
  - [RDDs vs. Dataframes vs. Datasets – What is the Difference?](https://www.analyticsvidhya.com/blog/2020/11/what-is-the-difference-between-rdds-dataframes-and-datasets/)
  - [A Tale of Three Apache Spark APIs: RDDs vs DataFrames and Datasets](https://databricks.com/blog/2016/07/14/a-tale-of-three-apache-spark-apis-rdds-dataframes-and-datasets.html)
