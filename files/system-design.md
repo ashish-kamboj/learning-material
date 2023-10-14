@@ -1,4 +1,4 @@
-### Ways to optimize sql query performance
+### Q. Ways to optimize sql query performance
  - Indexing
  - Caching
  - Connection Pooling: Connection pooling can reduce the overhead of creating and destroying database connections for each query.
@@ -6,7 +6,7 @@
 
  ---
 
-### Top 7 Ways to 10x Your API Performance
+### Q. Top 7 Ways to 10x Your API Performance
  - Caching
  - Connection Pool
  - Pagination (using limit and offset parameters)
