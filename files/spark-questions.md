@@ -1,10 +1,10 @@
-### Spark Operations
+### Q. Spark Operations
  - Transformation
  - Action
 
  ---
 
- ### RDD - Resilient Distributed Dataset
+ ### Q. RDD - Resilient Distributed Dataset
  - Fault tolerant distributed dataset
  - Lazy Evaluation
  - Caching
@@ -17,7 +17,7 @@
 
  ---
 
-### Spark Architechture Flow
+### Q. Spark Architechture Flow
  DAG (combination of RDDs) -> DAG Scheduler -> Task Scheduler (output: set of stages) -> Cluster Manager (Does resource allocation) -> Executor
 
   **Reference**
@@ -45,6 +45,13 @@ parquet is having default snappy compression
  - [RDD Programming Guide](https://spark.apache.org/docs/latest/rdd-programming-guide.html)
 
 ---
+
+### Q. Broadcast in spark
+`Broadcast` function is used to mark a DataFrame or RDD (Resilient Distributed Dataset) to be broadcasted to all worker nodes in a distributed computing cluster. Broadcasting is a performance optimization technique in Apache Spark, and it can significantly improve the performance of certain types of operations, particularly those involving joins or lookups.
+
+When performing a join operation between a small DataFrame (or RDD) and a large DataFrame, broadcasting the smaller DataFrame to all worker nodes can be more efficient than shuffling the larger DataFrame across the cluster. Broadcasting reduces data transfer and network overhead, which can lead to faster query execution.
+
+However, it's important to note that you should use the broadcast function with caution, as broadcasting large DataFrames can consume a significant amount of memory on worker nodes. Broadcasting is most effective when the DataFrame to be broadcasted is genuinely small and can fit in the memory of each worker node without causing memory issues.
 
 ### Q. Pandas Vs Spark [(here)](https://towardsdatascience.com/stop-using-pandas-and-start-using-spark-with-scala-f7364077c2e0)
  - By default, Spark is multi-threaded whereas Pandas is single-threaded
