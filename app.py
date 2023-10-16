@@ -15,8 +15,11 @@ def get_alias(file_name):
     file_name_str = str(os.path.basename(file_name))  # Convert WindowsPath object to string
     return aliases.get(file_name_str, file_name_str)
 
+# Sort the files list by aliases
+files.sort(key=lambda file: get_alias(file))
+
 # Create a drop down list of file names with aliases
-file = st.sidebar.selectbox("Select a markdown file", files, format_func=get_alias)
+file = st.sidebar.selectbox("Select a Topic", files, format_func=get_alias)
 
 # Display the content of the selected file
 content = read_markdown_file(file)
