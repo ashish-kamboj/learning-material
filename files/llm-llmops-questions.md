@@ -102,3 +102,108 @@ Evaluating large language models (LLMs) is crucial for ensuring their effectiven
 - [Evaluating Large Language Models (LLMs): A Standard Set of Metrics for Accurate Assessment](https://www.linkedin.com/pulse/evaluating-large-language-models-llms-standard-set-metrics-biswas-ecjlc)
 
 ---
+## Q. How to evaluate the RAG-based system?
+Evaluating a Retrieval-Augmented Generation (RAG) system involves assessing both the retrieval and generation components to ensure they work effectively together. Here are the key metrics and frameworks used for evaluating RAG systems:
+
+1. **Evaluation Components**
+    - **Retrieval Evaluation**
+        - **Context Relevancy:** Measures how relevant the retrieved documents are to the user's query. Metrics such as precision, recall, Mean Reciprocal Rank (MRR), and Mean Average Precision (MAP) can be employed to quantify this aspect.
+        - **Context Recall:** Evaluates the completeness of retrieved contexts against ground truth, ensuring that all necessary information is captured. <br></br>
+    - **Response Evaluation**
+        - **Faithfulness:** Assesses the factual consistency of the generated response against the retrieved context. This can be quantified on a scale (e.g., 0 to 1) based on how well claims in the answer can be inferred from the context.
+        - **Answer Relevancy:** Measures how well the generated response addresses the user's query, focusing on relevance rather than factual accuracy. This can involve metrics like BLEU, ROUGE, or embedding-based evaluations.
+
+2. **Frameworks for Evaluation**
+**TRIAD Framework**
+This framework breaks down evaluation into three major components:
+    - **Context Relevance:** Evaluates retrieval accuracy.
+    - **Faithfulness (Groundedness):** Checks if generated responses are factually accurate and grounded in retrieved documents.
+    - **Answer Relevance:** Assesses how well responses address user queries.
+
+**A Unified Evaluation Process of RAG (Auepora)**
+This analytical framework categorizes challenges in evaluating RAG systems and provides a structured approach to assess retrieval, generation, and overall system performance. It highlights the interplay between retrieval accuracy and generative quality.
+
+3. **Challenges in Evaluation**
+Evaluating RAG systems presents unique challenges due to their complexity:
+    - **Integration of External Data:** The dynamic nature of external databases can affect retrieval accuracy and response quality.
+    - **Subjectivity in Evaluation:** Using LLMs or human evaluators introduces variability in assessments, necessitating standardized evaluation criteria to ensure consistency.
+
+4. **Practical Considerations**
+    - **Cost and Scalability:** Evaluating RAG systems can be computationally intensive. Balancing thorough evaluation with operational costs is crucial for large-scale deployments.
+    - **Human-in-the-loop Systems:** Incorporating human feedback can enhance evaluation but may introduce variability based on reviewer expertise.
+
+---
+## Q. Explain different LLM prompting techniques
+1. **Zero-Shot Prompting**
+    - Provides no examples in the prompt, just instructions for the desired output
+    - LLM tries to complete the prompt based solely on the instructions
+2. **One-Shot Prompting**
+    - Provides a single example in the prompt to illustrate the desired output
+    - Example consists of an input and the corresponding desired completion
+3. **Few-Shot Prompting**
+    - Provides multiple examples in the prompt to illustrate the desired output
+    - Outperforms one-shot prompting, which outperforms zero-shot
+    - Considered a form of "in-context learning"
+4. **Chain-of-Thought (CoT) Prompting**
+    - Similar to few-shot, but examples include detailed step-by-step reasoning
+    - Particularly helpful for tasks like arithmetic problem solving
+    - Triggers the LLM to exhibit a reasoning process in its output
+5. **Zero-Shot CoT Prompting**
+    - Appending "let's think step-by-step" to the prompt triggers reasoning without examples
+    - Outperforms standard zero-shot but underperforms few-shot CoT
+6. **Emotional Prompting**
+    - Adding emotional stimulus to the prompt can elicit a better response from the LLM
+    - For example, adding urgency or a request for the LLM's "best" can lead to more direct outputs
+7. **Task-Specific Knowledge Enrichment**
+    - Incorporating relevant domain knowledge into the prompt can improve accuracy
+    - For example, providing product details when asking for a sales description
+
+References:
+- [LLM prompting guide](https://huggingface.co/docs/transformers/en/tasks/prompting)
+- [26 prompting tricks to improve LLMs](https://www.superannotate.com/blog/llm-prompting-tricks)
+- [Advanced Prompt Engineering Techniques](https://www.mercity.ai/blog-post/advanced-prompt-engineering-techniques)
+- [Getting started with LLM prompt engineering](https://learn.microsoft.com/en-us/ai/playbook/technology-guidance/generative-ai/working-with-llms/prompt-engineering)
+- [Prompting Techniques](https://www.promptingguide.ai/techniques)
+
+---
+## Q. How do you control hallucinations at different levels?
+Controlling hallucinations in various contexts, particularly in the realm of artificial intelligence and large language models (LLMs), involves several strategies tailored to different levels of interaction and understanding. Here’s a breakdown of approaches to manage hallucinations effectively:
+
+1. **User-Level Control**
+    - **Clarification Prompts:** Encourage users to ask clarifying questions or provide more context to refine the responses they receive, reducing the likelihood of hallucinations.
+    - **Feedback Mechanisms:** Implement systems where users can report inaccuracies or hallucinations, helping to improve the model's performance over time.
+2. **Model-Level Control**
+    - **Fine-Tuning:** Train the model on high-quality, domain-specific datasets that minimize the occurrence of hallucinations by providing accurate context and examples.
+    - **Prompt Engineering:** Use structured prompts that guide the model towards generating more accurate and relevant responses. Techniques include zero-shot, one-shot, and few-shot prompting to provide context.
+3. **System-Level Control**
+    - **Retrieval-Augmented Generation (RAG):** Combine generative models with retrieval systems to provide factual grounding. This approach allows the model to pull in relevant information from external sources, reducing the chances of generating false information.
+    - **Post-Processing Filters:** Implement algorithms that evaluate generated outputs for accuracy and relevance before presenting them to users, filtering out potential hallucinations.
+4. **Therapeutic and Psychological Approaches**
+    - **Cognitive Behavioral Techniques:** For individuals experiencing hallucinations (in a clinical sense), cognitive behavioral therapy (CBT) can help manage symptoms by changing thought patterns and reactions to hallucinations.
+    - **Psychoeducation:** Educating users about hallucinations—what they are and how they can manifest—can empower them to recognize and cope with these experiences more effectively.
+5. **Research and Development**
+    - **Continuous Monitoring and Evaluation:** Regularly assess model outputs using metrics designed to identify hallucinations. Research into adversarial examples can also help understand how models generate inaccurate information.
+    - **Community Involvement:** Engaging with users and researchers can provide insights into common issues faced with hallucinations, leading to collaborative solutions.
+
+---
+## Q. Different Types of Chunking Methods
+   
+- **Fixed-Length Chunking:** This straightforward method divides text into equal-sized chunks based on a predetermined number of tokens or characters. It is computationally simple but may lack semantic integrity.
+- **Sliding Window Chunking:** This technique creates overlapping chunks, ensuring that crucial context is preserved across boundaries. It maintains continuity and is useful for sequential data analysis.
+- **Semantic Chunking:** This method focuses on creating chunks based on the meaning and context of the text rather than fixed sizes. It groups semantically similar sentences together, enhancing coherence but requiring more computational resources.
+- **Recursive Chunking:** This approach breaks down text recursively until certain conditions are met, such as reaching a minimum chunk size. It adapts to the structure of the text, preserving meaning better than fixed methods.
+- **Document-Specific Chunking:** This strategy respects the logical structure of documents, creating chunks that align with paragraphs or sections, which helps maintain the original author's organization and coherence.
+- **Adaptive Chunking:** This advanced method dynamically adjusts chunk sizes based on content complexity and structure, optimizing relevance and completeness for better retrieval and generation.
+
+---
+## Q. How to Find the Ideal Chunk Size
+- **Data Preprocessing:** Clean your data to remove noise before determining chunk sizes. This step ensures that only relevant information is included in each chunk.
+- **Range Testing:** Experiment with a range of chunk sizes to see how they affect retrieval quality and response accuracy. Smaller chunks may capture fine details, while larger ones retain more context.
+- **Performance Evaluation:** Use representative datasets to create embeddings for different chunk sizes and evaluate their performance through queries to determine which size yields the best results.
+- **Iterative Process:** Finding the ideal chunk size is often an iterative process that requires testing various configurations against different queries until you identify the most effective approach for your specific application.
+
+References:
+- [Chunking Strategies for LLM Applications](https://www.pinecone.io/learn/chunking-strategies/)
+- [A Guide to Chunking Strategies for Retrieval Augmented Generation (RAG)](https://www.sagacify.com/news/a-guide-to-chunking-strategies-for-retrieval-augmented-generation-rag)
+- [Mastering RAG: Advanced Chunking Techniques for LLM Applications](https://www.galileo.ai/blog/mastering-rag-advanced-chunking-techniques-for-llm-applications)
+- [How to Choose the Right Chunking Strategy for Your LLM Application](https://www.mongodb.com/developer/products/atlas/choosing-chunking-strategy-rag/)
