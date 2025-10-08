@@ -1,0 +1,61 @@
+
+# LoRA vs QLoRA Overview
+
+Low-Rank Adaptation (LoRA) freezes a pre-trained model’s weights and adds small trainable low-rank matrices, greatly reducing the number of parameters updated during fine-tuning. This dramatically cuts GPU memory and trainable parameters (e.g. ~10,000× fewer trainable params and 3× less memory for GPT-3 175B) without hurting accuracy. Importantly, LoRA’s adapters can be merged into the model at deployment, introducing **no extra inference latency**. Quantized LoRA (QLoRA) extends this by first quantizing the base model to 4-bit precision and then backpropagating only through the frozen, quantized weights into LoRA adapters. QLoRA maintains full 16-bit fine-tuning accuracy while reducing memory so much that even 65B-parameter models can be tuned on a single 48 GB GPU. In short, LoRA cuts adaptation costs by training few parameters, while QLoRA adds heavy quantization to further shrink memory requirements.
+
+## 1. Domain-specific Advantages & Disadvantages
+
+### Text Models (LLMs, Summarization, Translation)
+
+-   **LoRA** has proven very effective for language tasks. It achieves fine-tuning quality on par with full-tuning for GPT, BERT, etc., while using far fewer parameters and less memory. Training throughput is higher (since only the small adapters require gradients) and there is no inference slowdown This makes LoRA ideal for adapting large LLMs to many tasks cheaply (e.g. multiple translation or summarization tasks share one base model). A drawback is that LoRA assumes the needed weight change has low rank; if a task truly requires large, complex updates, LoRA may underperform full fine-tuning.
+    
+-   **QLoRA** builds on this for LLMs: by quantizing the model to 4-bit and only training LoRA adapters, it **fits huge models on limited hardware**. For example, QLoRA lets practitioners fine-tune 65B models on a single 48 GB GPU while **preserving full precision performance**. This means cutting hardware needs without accuracy loss. The trade-off is complexity: QLoRA requires specialized quantization (e.g. _bitsandbytes_) and careful tuning. Training can be slower due to dequantization overhead, though research suggests the resulting model can match 16-bit performance. In practice, QLoRA shines when base models are too large to load in higher precision.
+    
+
+### Vision Models (Classification, Detection)
+
+-   **LoRA** can be applied to vision transformers (ViTs) and other models. For image classification or encoder tasks, LoRA adapters reduce trainable parameters and memory while still matching full fine-tuning accuracy. For example, one study found a serial-LoRA variant using only ¼ the parameters of standard LoRA still matched performance on vision tasks. However, **LoRA can struggle with complex vision tasks** like object detection, which require precise spatial localization. Naïve LoRA on a detection model often fails (since only low-rank updates are applied and detection heads may need more tuning). Nevertheless, tailored approaches (e.g. combining LoRA with partial full-tuning of head layers) can achieve ~97–100% of full-tuning accuracy while updating only ~12–20% of parameters.
+    
+-   **QLoRA/Quantized Training** in vision mainly appears in large models like diffusion or vision-language. For example, in fine-tuning image diffusion models, a _fully quantized LoRA_ training scheme (QLoRA-like) can cut memory and power dramatically (5.5× more energy-efficient and up to 1.8× faster training) with minimal quality loss. In practice, quantized LoRA isn’t yet common for classic vision tasks, but it’s emerging (e.g. quantized training accelerators for LoRA). The benefit is the same: **huge memory and efficiency gains** for large vision models, at the cost of more complex training code.
+    
+
+### Speech Models (ASR, TTS)
+
+-   **LoRA** is beginning to see use in speech tasks. For multilingual ASR (e.g. adapting Whisper to new languages), adding LoRA “language expert” adapters yields **10–15% relative WER reduction** over standard fine-tuning. This shows LoRA can effectively specialize large speech models to new languages or domains. In TTS (text-to-speech), LoRA is less documented in research, but practical guides (e.g. Unsloth docs) show LoRA/PEFT can fine-tune multi-billion-parameter TTS models with reduced memory. The advantage is the same: smaller parameter updates and faster iterations. The downside may be that very fine audio details (like precise prosody) could sometimes need more capacity than a low-rank update provides.
+    
+-   **QLoRA/Quantization** has not been widely reported for speech adaptation yet. In principle, quantizing a speech model’s weights to 4-bit (then fine-tuning LoRA adapters) could shrink memory just as for LLMs. If model size is the bottleneck (e.g. large speech encoders), QLoRA could enable training on smaller GPUs. However, it’s largely unexplored in literature, and one must ensure audio quality isn’t harmed by quantization noise.
+    
+
+### Multimodal Models (Vision-Language, CLIP, Flamingo)
+
+-   **LoRA** is well-suited for multimodal models. New techniques (like VoRA) inject LoRA vision adapters into LLMs to teach them image understanding. These add visual processing via low-rank layers and then merge them at inference, so the model becomes multimodal **without extra inference cost**. More commonly, LoRA is used to fine-tune vision-language models (like CLIP or BLIP variants) on new multimodal tasks. The benefit is flexible adaptation (e.g. adding question-answering ability) without retraining the huge vision-language backbone. Disadvantages mirror vision/text cases: if the task needs major fusion changes, LoRA might be limited.
+    
+-   **QLoRA** can also be applied. For example, Gemma 3 (a 27B vision-language model) was fine-tuned on an OCR task using QLoRA: by quantizing the model to 4-bit and training LoRA adapters, the authors adapted it to images-to-text **on limited hardware without accuracy loss**. In general, QLoRA allows even the largest multimodal models to be tuned on single GPUs, at the cost of implementing the quantized training stack. For inference, a QLoRA-fine-tuned model is already quantized (and can use 4-bit inference) if supported, benefiting edge deployment or inference efficiency.
+    
+
+## 2. Performance and Trade-offs
+| **Metric** |**LoRA**  |**QLoRA**  |
+|--|--|--|
+|**Memory Efficiency**  |_Reduced training memory_. Only small adapter matrices are trained, cutting required optimizer states by ~3×. (But base model still in FP16/32.)  |_Extreme memory saving_. Base model in 4-bit halves raw memory; with double-quantization and paged optimizers, 65B LMs fit on one 48GB GPU. Extra memory for quant scales is small.
+|**Compute Cost (Train)** |Lower compute for backward (no grad on frozen weights), so higher throughput and 2–3× faster training. (Forward still full model cost.) |Mixed: Forward/backward use 4-bit math which can be faster per-op, but overhead of quant/dequant or lacking hardware support can slow it down. In some implementations QLoRA training is slower than 16-bit LoRA.
+|**Inference Latency** |_No additional latency_. LoRA adapters are merged into the model, so inference speed equals the original model. |_If using quantized model_: 4-bit inference can be ~2× faster on supported hardware (per some reports), but on many platforms it can be slower or require special kernels. If one dequantizes at run-time, latency returns to FP16 baseline.
+|**Accuracy** | Matches fine-tuning in most tasks. Slight risk of underfitting if rank is too low or task needs big changes. |Matches fine-tuning (paper reports “full 16-bit performance”). Quantization noise is mitigated by NF4/double-quantization. No reported accuracy drop in published results.
+|**Implementation Complexity** |Simple to implement via PEFT libraries (e.g. HuggingFace PEFT). No special requirements beyond model support for adapters. |More complex: requires quantization libraries (bitsandbytes, etc.) and careful setup (paged optimizers, etc. in QLoRA). Training loop is more intricate.
+|**Fine-tuning Scope** |Well-suited when you can load the full model (FP16/FP32) in memory but want parameter efficiency. |Best when even FP16 loading is too big: lets you fine-tune _larger_ models or use _bigger batch sizes_ by using 4-bit.
+|**Inference Scope** |Adapters merged, use normal (FP16/FP32) model for inference. |Post-tuning model is quantized; if inference runtime supports 4-bit (e.g. TVM or on-device engines), you can deploy the 4-bit model to save RAM.
+
+LoRA’s big **memory win** is that you don’t need gradients for the frozen weights (optimizer only tracks adapters). QLoRA pushes further by compressing the _entire_ model to 4-bit. The trade-off is **compute and complexity**: LoRA tends to speed up training, whereas naive 4-bit backprop can be slower because many frameworks still use FP16 for math even when weights are 4-bit. Some open-source benchmarks show QLoRA slower than standard LoRA unless specially optimized. Inference-wise, LoRA is transparent (you just run the base model). With QLoRA, if you deploy the quantized model natively, you can save memory and possibly run faster on integer hardware; otherwise, you must use (or convert back to) FP16 which loses the quant gains.
+
+## 3. When to Use LoRA vs QLoRA
+
+-   **Resource-Constrained Training**: If GPU memory is _very tight_ (e.g. <24GB) but you need to fine-tune a large model, **QLoRA** is often preferable. Its 4-bit representation makes it possible to adapt 13B–65B models on modest GPUs. If memory is moderately tight or the model is mid-sized (≤7B–13B) and you just want efficiency, **LoRA** alone may suffice. LoRA’s standard 16-bit model still needs to fit in memory, so use QLoRA when even FP16/32 loading fails.
+    
+-   **Large-Scale Training (Multiple Tasks)**: When juggling many tasks (e.g. dozens of fine-tunes of the same base), **LoRA modules** shine. You can freeze the heavy model and store just small adapter checkpoints (saving terabytes of storage). LoRA makes task-switching efficient. QLoRA also reduces storage (4-bit base model + small adapters), but the main boon is memory. For very large models (hundreds of billions), QLoRA lets you fine-tune on fewer GPUs – great for research labs without massive clusters.
+    
+-   **Edge Deployment**: If the goal is a small, fast model on-device, **quantization matters**. A model fine-tuned with QLoRA is already quantized; you can deploy it as a ~4× smaller footprint. If the device supports 4-bit inference (or INT8), you get major memory and energy savings. LoRA alone doesn’t shrink the base model for deployment, though the adapters themselves are tiny. So for edge inference optimization, QLoRA (or post-hoc quantization of the LoRA-tuned model) is preferable.
+    
+-   **Inference Optimization**: If you only care about making inference efficient (and you have the resources to fine-tune normally), you might fine-tune with LoRA (or QLoRA) and then separately apply an optimized quantization or distillation for deployment. LoRA ensures no runtime overhead, so the base model structure remains unchanged for any inference optim. QLoRA naturally yields a quantized model, which may be fed into fast inference libraries (e.g. ONNX Runtime with INT4). Use QLoRA when inference RAM is a bottleneck or when using hardware (like mobile NPUs) that favor low-bit models. Otherwise, LoRA’s fine-tuning benefits (small adapters, no latency hit) may be enough.
+    
+
+## 4. Summary
+LoRA is the go-to method for efficient fine-tuning when you can load the full model and want to minimize trainable parameters and storage. It speeds up training (by training fewer params) and avoids any extra cost at inference. QLoRA is best when model size _itself_ is the constraint: it lets you adapt models far larger than would normally fit by using 4-bit weights. In practice, if you have a very large language or vision model but only one (or a few) mid-tier GPUs, QLoRA can unlock fine-tuning at that scale. On the other hand, if you have ample memory or care mostly about training efficiency, LoRA alone is simpler and highly effective.
